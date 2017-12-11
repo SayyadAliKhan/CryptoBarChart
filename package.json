@@ -1,0 +1,25 @@
+{
+  "name": "cryptobarchart",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SayyadAliKhan/CryptoBarChart.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SayyadAliKhan/CryptoBarChart/issues"
+  },
+  "homepage": "https://github.com/SayyadAliKhan/CryptoBarChart#readme",
+  "dependencies": {
+    "angular-chart.js": "^1.1.1",
+    "express": "^4.16.2",
+    "https": "^1.0.0",
+    "request": "^2.83.0"
+  }
+}

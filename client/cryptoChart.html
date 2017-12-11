@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Crypto Bar Chart</title>
+    <script src="../node_modules/angular/angular.js"></script>
+    <script src="../node_modules/chart.js/dist/Chart.min.js"></script>
+    <script src="../node_modules/angular-chart.js/dist/angular-chart.js"></script>
+
+  </head>
+  <body ng-app="app">
+    <div ng-controller="BarChartController" class="col-lg-offset-6 col-lg-12">
+      <div class="row">
+        <div><h1>Cryptocurrency Chart USD Market</h1></div>
+        <canvas id="bar" class="chart chart-bar"
+          chart-data="data" chart-labels="labels" chart-series="series">
+        </canvas>
+      </div>
+    </div>
+    <script type="text/javascript" src="./main.js"></script>
+  </body>
+</html>
