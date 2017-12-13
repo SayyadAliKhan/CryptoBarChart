@@ -2,7 +2,7 @@
   "name": "cryptobarchart",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "cryptoChart.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,8 +18,11 @@
   "homepage": "https://github.com/SayyadAliKhan/CryptoBarChart#readme",
   "dependencies": {
     "angular-chart.js": "^1.1.1",
+    "cors": "^2.8.4",
+    "ejs": "^2.5.7",
     "express": "^4.16.2",
     "https": "^1.0.0",
+    "path": "^0.12.7",
     "request": "^2.83.0"
   }
 }

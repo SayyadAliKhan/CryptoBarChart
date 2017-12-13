@@ -1,18 +1,22 @@
 const express = require('express');
-const request = require('request')
+const path = require('path');
 const app = express();
 const port = process.env.PORT || 8081;
 
-app.get('/usdMarket', function(err, resp){
+app.set('views', path.join(__dirname, 'client'));
+app.engine('html', require('ejs').renderFile);
 
-    request('https://api.coinmarketcap.com/v1/ticker/?limit=10', function(err, res, body) {
+app.use(express.static(path.join(__dirname, 'client')));
 
-      if(err)
-        resp.json({state: 'failure', crypto: body ? body : null});
-      else
-        resp.json({state: 'success', crypto: body ? body : null});
+app.get('/client', function(err, resp){
 
-    });
+  resp.render('cryptoChart.html');
+
+});
+
+app.get('/serviceUnavailable', function(err, resp){
+
+  resp.render('error.html');
 
 });
 

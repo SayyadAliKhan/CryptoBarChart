@@ -1,30 +1,43 @@
-var app = angular.module('app', ['chart.js']);
+'use strict';
+
+var app = angular.module('app', ['chart.js', 'ngRoute']);
 
 app.factory('Services', ['$http', function($http){
   var getCryptoData = function(){
-    return $http.get('/usdMarket');
+    return $http.get('https://api.coinmarketcap.com/v1/ticker/?limit=10');
   }
   return{
     getCryptoData : getCryptoData
   }
 }]);
 
-app.controller('BarChartController', ['$scope','Services', function ($scope, Services) {
+app.controller('BarChartController', ['$scope','Services','$location', function ($scope, Services, $location) {
+
   getCryptoData();
+
   function getCryptoData(){
+
+    console.log("called");
     Services.getCryptoData().then(function(response){
-      $scope.labels = [];
-      $scope.data = [];
-      if(response.state == 'success'){
-        $scope.series = ['Cryptocurrency'];
-        angular.forEach(response.body.crypto, function(value, key){
-          $scope.labels[key] = value.symbol;
-          $scope.data[key] = value.price_usd;
-        });
+
+      if(response.data != null){
+
+        $scope.header = "Cryptocurrency Chart USD Market";
+        $scope.labels = [];
+        $scope.data = [];
+
+        for (var crypto of response.data) {
+          $scope.labels.push(crypto.symbol);
+          $scope.data.push(crypto.price_usd);
+        }
+
+      }else{
+        window.location.href = '/serviceUnavailable';
       }
+    }).catch(function(err){
+       window.location.href = '/serviceUnavailable';
     });
   }
-
   setInterval(function(){
     getCryptoData();
   },300000);
