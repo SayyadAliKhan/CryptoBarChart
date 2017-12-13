@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('app', ['chart.js', 'ngRoute']);
+var app = angular.module('app', ['chart.js']);
 
 app.factory('Services', ['$http', function($http){
   var getCryptoData = function(){
@@ -11,7 +11,7 @@ app.factory('Services', ['$http', function($http){
   }
 }]);
 
-app.controller('BarChartController', ['$scope','Services','$location', function ($scope, Services, $location) {
+app.controller('BarChartController', ['$scope','Services', function ($scope, Services) {
 
   getCryptoData();
 
