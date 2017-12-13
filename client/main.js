@@ -2,15 +2,6 @@
 
 var app = angular.module('app', ['chart.js']);
 
-app.factory('Services', ['$http', function($http){
-  var getCryptoData = function(){
-    return $http.get('https://api.coinmarketcap.com/v1/ticker/?limit=10');
-  }
-  return{
-    getCryptoData : getCryptoData
-  }
-}]);
-
 app.controller('BarChartController', ['$scope','Services', function ($scope, Services) {
 
   getCryptoData();
@@ -42,4 +33,13 @@ app.controller('BarChartController', ['$scope','Services', function ($scope, Ser
     getCryptoData();
   },300000);
 
+}]);
+
+app.factory('Services', ['$http', function($http){
+  var getCryptoData = function(){
+    return $http.get('https://api.coinmarketcap.com/v1/ticker/?limit=10');
+  }
+  return{
+    getCryptoData : getCryptoData
+  }
 }]);
